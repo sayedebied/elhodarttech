@@ -92,50 +92,6 @@ async function copyText(text, button, defaultLabel) {
   }
 }
 
-function getMobilePlatform() {
-  const userAgent = navigator.userAgent || "";
-  const isIPadOS =
-    navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1;
-
-  if (/Android/i.test(userAgent)) return "android";
-  if (/iPad|iPhone|iPod/i.test(userAgent) || isIPadOS) return "ios";
-  return "other";
-}
-
-async function openVodafoneOnIOS(event, payment, appLink) {
-  event.preventDefault();
-  appLink.setAttribute("aria-busy", "true");
-
-  try {
-    await writeToClipboard(payment.account);
-    showToast("تم نسخ رقم فودافون كاش؛ الصقه داخل التطبيق ✓");
-  } catch (_error) {
-    showToast("انسخ رقم المحفظة ثم الصقه داخل التطبيق");
-    window.prompt("انسخ رقم فودافون كاش:", payment.account);
-  } finally {
-    appLink.removeAttribute("aria-busy");
-    window.location.assign(payment.appUrl);
-  }
-}
-
-function configureVodafoneLink(payment, appLink) {
-  const platform = getMobilePlatform();
-
-  // فتح الرابط في نفس الصفحة يقلل التبويبات الوسيطة على الموبايل.
-  appLink.removeAttribute("target");
-  appLink.href = payment.appUrl;
-
-  if (platform === "android") {
-    return;
-  }
-
-  if (platform === "ios") {
-    appLink.addEventListener("click", (event) =>
-      openVodafoneOnIOS(event, payment, appLink)
-    );
-  }
-}
-
 const container = document.getElementById("paymentCardsList");
 const template = document.getElementById("paymentCardTemplate");
 
@@ -179,11 +135,19 @@ paymentMethods.forEach((method) => {
   );
 
   if (payment.appUrl) {
-    if (payment.id === "vodafoneCash" || payment.id === "vodafoneCash2") {
-      configureVodafoneLink(payment, appLink);
-    } else {
-      appLink.href = payment.appUrl;
-    }
+    appLink.href = payment.appUrl;
+    appLink.target = "_blank";
+    appLink.rel = "noopener noreferrer";
+
+    appLink.addEventListener("click", () => {
+      if (payment.account) {
+        writeToClipboard(payment.account)
+          .then(() => {
+            showToast("تم نسخ الرقم وجارٍ فتح التطبيق... ✓");
+          })
+          .catch(() => {});
+      }
+    });
   } else {
     appLink.remove();
     actions.classList.add("single");

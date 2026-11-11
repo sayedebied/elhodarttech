@@ -75,7 +75,7 @@ const PHARMACY = {
       nameHolder: "السيد محمود محمد مهدي",
       note: "تحويل لمحفظة فودافون كاش",
       logo: "vodafone_cash_logo.png",
-      appUrl: "http://vf.eg/vfcash?id=mt&qrId=ZrqSPy"
+      appUrl: "https://vf.eg/vfcash?id=mt&qrId=ZrqSPy"
     },
     vodafoneCash2: {
       id: "vodafoneCash2",
@@ -84,7 +84,7 @@ const PHARMACY = {
       nameHolder: "محفظة فودافون كاش",
       note: "تحويل لمحفظة فودافون كاش",
       logo: "vodafone_cash_logo.png",
-      appUrl: "http://vf.eg/vfcash"
+      appUrl: "https://vf.eg/vfcash?id=mt&qrId=SR4Sw2"
     },
     cibBank: {
       id: "cibBank",
