@@ -95,7 +95,7 @@ const PHARMACY = {
       copyLabel: "نسخ رقم الحساب",
       appLabel: "فتح إنستاباي",
       logo: "cib_bank_logo.png",
-      appUrl: "https://ipn.eg/S/syd.mahmoud/instapay/5gJ2be"
+      appUrl: "instapay_general"
     }
   }
 };

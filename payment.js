@@ -92,6 +92,22 @@ async function copyText(text, button, defaultLabel) {
   }
 }
 
+function getInstaPayGeneralUrl() {
+  const userAgent = navigator.userAgent || "";
+  const isAndroid = /Android/i.test(userAgent);
+  const isIOS =
+    /iPad|iPhone|iPod/i.test(userAgent) ||
+    (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
+
+  if (isAndroid) {
+    return "intent://#Intent;package=com.egyptianbanks.instapay;scheme=instapay;S.browser_fallback_url=https%3A%2F%2Fwww.instapay.eg;end";
+  }
+  if (isIOS) {
+    return "instapay://";
+  }
+  return "https://www.instapay.eg";
+}
+
 const container = document.getElementById("paymentCardsList");
 const template = document.getElementById("paymentCardTemplate");
 
@@ -135,9 +151,19 @@ paymentMethods.forEach((method) => {
   );
 
   if (payment.appUrl) {
-    appLink.href = payment.appUrl;
-    appLink.target = "_blank";
-    appLink.rel = "noopener noreferrer";
+    let resolvedUrl = payment.appUrl;
+    if (payment.appUrl === "instapay_general" || (payment.id === "cibBank" && payment.appUrl.includes("instapay_general"))) {
+      resolvedUrl = getInstaPayGeneralUrl();
+    }
+
+    appLink.href = resolvedUrl;
+
+    if (resolvedUrl.startsWith("intent:") || resolvedUrl.startsWith("instapay:")) {
+      appLink.removeAttribute("target");
+    } else {
+      appLink.target = "_blank";
+      appLink.rel = "noopener noreferrer";
+    }
 
     const appLabelEl = appLink.querySelector("span");
     if (appLabelEl && payment.appLabel) {
