@@ -5,39 +5,43 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://*.googletagmanager.com; style-src 'self'; img-src 'self' data: https://*.google-analytics.com https://*.googletagmanager.com; font-src 'self'; connect-src 'self' https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com https://*.google.com; object-src 'none'; base-uri 'self'; form-action 'none'">
   <title>وسائل الدفع - مؤسسة سيد عبيد المتكاملة ElHoda &amp; RT Tech</title>
-  <meta name="description" content="وسائل الدفع الإلكتروني والتحويل السريع لمؤسسة سيد عبيد المتكاملة ElHoda & RT Tech - InstaPay وفودافون كاش.">
-  <link rel="icon" type="image/png" href="client_assets/logo/ultimate-icon-square.png">
-  <link rel="stylesheet" href="style.css?v=5.4">
+  <meta name="description" content="وسائل الدفع الإلكتروني والتحويل السريع لمؤسسة سيد عبيد المتكاملة ElHoda & RT Tech - InstaPay وفودافون كاش وحساب بنك CIB.">
+  <link rel="icon" type="image/png" sizes="64x64" href="client_assets/logo/favicon-64x64.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="client_assets/logo/favicon-32x32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="client_assets/logo/apple-touch-icon.png">
+  <link rel="stylesheet" href="style.css?v=6.1">
 </head>
 <body class="payment-page">
 
-<div class="wrap">
+<main class="wrap" id="main-content">
   <!-- بطاقة الشعار والبيانات الرئيسية -->
-  <section class="hero">
+  <header class="hero">
     <div class="logo-wrap">
-      <img src="client_assets/logo/ultimate-avatar-cropped.png" alt="شعار مؤسسة سيد عبيد المتكاملة ElHoda & RT Tech" class="logo-img">
+      <img src="client_assets/logo/ultimate-avatar-hero.png" alt="شعار مؤسسة سيد عبيد المتكاملة ElHoda & RT Tech" class="logo-img" width="112" height="112" loading="eager">
     </div>
-    <h1 id="pharmacyName">مؤسسة سيد عبيد المتكاملة</h1>
+    <h1 id="businessName">مؤسسة سيد عبيد المتكاملة</h1>
     <span class="brand-en" id="businessEnglishName">ElHoda &amp; RT Tech</span>
     <p class="subtitle">الدفع والتحويل الإلكتروني السريع</p>
     <div class="badge-status">
-      <span class="pulse-dot"></span>
+      <span class="pulse-dot" aria-hidden="true"></span>
       <span>معاملات آمنة وفورية</span>
     </div>
-  </section>
+  </header>
 
   <!-- عنوان القسم -->
-  <div class="section-header">
-    <h2 class="section-title">اختر وسيلة الدفع المناسبة</h2>
-    <div class="section-line"></div>
-  </div>
+  <section aria-labelledby="paymentsSectionTitle">
+    <div class="section-header">
+      <h2 class="section-title" id="paymentsSectionTitle">اختر وسيلة الدفع المناسبة</h2>
+      <div class="section-line" aria-hidden="true"></div>
+    </div>
 
-  <!-- حاوية بطاقات الدفع -->
-  <div id="paymentCardsList"></div>
+    <!-- حاوية بطاقات الدفع -->
+    <div id="paymentCardsList"></div>
+  </section>
 
   <!-- صندوق الإرشادات والتنبيه -->
-  <div class="notice-box">
-    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <aside class="notice-box" aria-label="تنبيه هام">
+    <svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
       <circle cx="12" cy="12" r="10"></circle>
       <line x1="12" y1="8" x2="12" y2="12"></line>
       <line x1="12" y1="16" x2="12.01" y2="16"></line>
@@ -45,47 +49,47 @@
     <div>
       <p><strong>تنبيه هام:</strong> يرجى التأكد من اسم المستلم والمبلغ قبل تأكيد التحويل، والاحتفاظ بلقطة شاشة (إيصال التحويل) لإرسالها عبر واتساب لتجهيز طلبك فوراً.</p>
     </div>
-  </div>
+  </aside>
 
   <!-- زر العودة للتواصل -->
   <a href="contact.html" class="portal-card portal-card-top" data-analytics-event="contact_page_click">
     <div class="portal-icon">
-      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <svg aria-hidden="true" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
         <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
       </svg>
     </div>
     <div class="portal-text">
-      <h2>الرجوع لقنوات التواصل</h2>
+      <h3>الرجوع لقنوات التواصل</h3>
       <p>واتساب • مكالمات • موقع المؤسسة</p>
     </div>
     <div class="portal-arrow">
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+      <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
         <polyline points="15 18 9 12 15 6"></polyline>
       </svg>
     </div>
   </a>
 
-  <div class="footer">
+  <footer class="footer">
     <span>شكراً لثقتكم بنا دائمًا ❤️</span>
-  </div>
-</div>
+  </footer>
+</main>
 
-<!-- إشعار النسخ المنبثق -->
+<!-- إشعار النسخ والتوجيه المنبثق -->
 <div class="toast" id="toast" role="status" aria-live="polite" aria-atomic="true">
-  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#22c55e" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+  <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#22c55e" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
     <polyline points="20 6 9 17 4 12"></polyline>
   </svg>
   <span id="toastText">تم نسخ الرقم بنجاح</span>
 </div>
 
 <template id="paymentCardTemplate">
-  <div class="payment-card">
+  <section class="payment-card">
     <div class="payment-header">
       <div class="payment-logo">
-        <img src="client_assets/logo/approved-logo-symbol-square.png" alt="" width="44" height="44">
+        <img src="client_assets/logo/approved-logo-symbol-square.png" alt="" width="44" height="44" loading="lazy">
       </div>
       <div class="payment-details">
-        <div class="payment-name"></div>
+        <h3 class="payment-name"></h3>
         <div class="payment-note"></div>
       </div>
     </div>
@@ -99,14 +103,14 @@
 
     <div class="payment-actions">
       <button type="button" class="btn btn-copy">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
           <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
           <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
         </svg>
         <span class="btn-label">نسخ الرقم</span>
       </button>
       <a class="btn btn-app" href="#" target="_blank" rel="noopener noreferrer">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
           <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
           <polyline points="15 3 21 3 21 9"></polyline>
           <line x1="10" y1="14" x2="21" y2="3"></line>
@@ -114,13 +118,13 @@
         <span>فتح التطبيق</span>
       </a>
     </div>
-  </div>
+  </section>
 </template>
 
-<script src="settings.js?v=6.1"></script>
-<script src="analytics.js?v=5.0"></script>
-<script src="site-common.js?v=5.0"></script>
-<script src="payment.js?v=6.2"></script>
+<script src="settings.js?v=6.2"></script>
+<script src="analytics.js?v=6.0"></script>
+<script src="site-common.js?v=6.0"></script>
+<script src="payment.js?v=6.3"></script>
 
 </body>
 </html>

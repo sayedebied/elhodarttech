@@ -2,7 +2,7 @@
 // إعدادات وبيانات مؤسسة سيد عبيد المتكاملة (ElHoda & RT Tech)
 // =========================================================
 
-const PHARMACY = {
+const SITE_CONFIG = {
   // البيانات الأساسية للنشاط
   name: "مؤسسة سيد عبيد المتكاملة",
   englishName: "ElHoda & RT Tech",
@@ -11,10 +11,12 @@ const PHARMACY = {
   activity: "حلول الكهرباء و الإضاءة و الأنظمة الذكية و المراقبة",
   tagline: "حلول ذكية لمستقبل أفضل",
 
-  // الشعار المعتمد النهائي (Ultimate Merged Brand Kit)
-  logo: "client_assets/logo/ultimate-avatar-cropped.png",
+  // الشعار المعتمد النهائي (نسخ محسّنة وسريعة التحميل لجميع الشاشات)
+  logo: "client_assets/logo/ultimate-avatar-hero.png",
   logoOriginal: "client_assets/logo/ultimate-logo-transparent.png",
-  favicon: "client_assets/logo/ultimate-icon-square.png",
+  favicon: "client_assets/logo/favicon-64x64.png",
+  favicon32: "client_assets/logo/favicon-32x32.png",
+  appleTouchIcon: "client_assets/logo/apple-touch-icon.png",
 
   // مواعيد العمل (كل يوم من 9 صباحًا حتى 2 بعد منتصف الليل ما عدا الجمعة إجازة)
   hours: {
@@ -37,9 +39,14 @@ const PHARMACY = {
   ],
   whatsappLocal: "01009770070",
   whatsapp: "201009770070", // كود مصر 20 بدون علامة + لروابط wa.me
+  whatsappBranches: [
+    { id: "sales", label: "المبيعات", number: "01007802888", whatsapp: "201007802888" },
+    { id: "support", label: "خدمة العملاء", number: "01115905060", whatsapp: "201115905060" }
+  ],
 
   // الرسالة الجاهزة التي تظهر عند فتح واتساب
-  prescriptionMsg: "السلام عليكم كنت حابب أستفسر عن",
+  whatsappMessage: "السلام عليكم كنت حابب أستفسر عن",
+  prescriptionMsg: "السلام عليكم كنت حابب أستفسر عن", // للتوافق العكسي مع الكود القديم
 
   // البريد الإلكتروني (إن وجد)
   email: "",
@@ -95,7 +102,13 @@ const PHARMACY = {
       copyLabel: "نسخ رقم الحساب",
       appLabel: "فتح إنستاباي",
       logo: "cib_bank_logo.png",
-      appUrl: "intent://open#Intent;scheme=ipn;package=com.egyptianbanks.instapay;end"
+      appUrl: "intent://open#Intent;scheme=ipn;package=com.egyptianbanks.instapay;S.browser_fallback_url=https%3A%2F%2Fplay.google.com%2Fstore%2Fapps%2Fdetails%3Fid%3Dcom.egyptianbanks.instapay;end",
+      iosAppUrl: "ipn://open",
+      appStoreUrl: "https://apps.apple.com/eg/app/instapay-egypt/id1592109205",
+      playStoreUrl: "https://play.google.com/store/apps/details?id=com.egyptianbanks.instapay"
     }
   }
 };
+
+// للتوافق العكسي مع أي إشارات سابقة
+const PHARMACY = SITE_CONFIG;

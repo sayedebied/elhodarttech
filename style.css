@@ -9,12 +9,12 @@
   --brand-red-light: #fef2f2;
 
   --brand-gold: #eaaf37;
-  --brand-gold-dark: #b47812;
+  --brand-gold-dark: #8a5806;
   --brand-gold-light: #fef8eb;
 
   /* متغيرات متوافقة مع الهيكل الأساسي */
   --brand-cyan: #eaaf37;
-  --brand-cyan-dark: #b47812;
+  --brand-cyan-dark: #8a5806;
   --brand-cyan-light: #fef8eb;
   --brand-teal: #d61a1e;
   --accent-red: #d61a1e;
@@ -43,6 +43,40 @@
 * {
   box-sizing: border-box;
   -webkit-tap-highlight-color: transparent;
+}
+
+/* =========================================
+   إمكانية الوصول (WCAG AA - Focus & Motion)
+   ========================================= */
+a:focus-visible,
+button:focus-visible,
+[tabindex]:focus-visible {
+  outline: 3px solid var(--brand-red);
+  outline-offset: 3px;
+  box-shadow: 0 0 0 4px rgba(214, 26, 30, 0.25);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .pulse-dot {
+    animation: none !important;
+  }
+  .logo-wrap:hover,
+  .tile:hover,
+  .call-branch:hover,
+  .portal-card:hover,
+  .quick-btn:hover,
+  .rx-banner:active,
+  .btn:active {
+    transform: none !important;
+  }
 }
 
 body {
@@ -250,7 +284,9 @@ h1 {
   flex: 1;
 }
 
-.rx-text h3 {
+.rx-text h3,
+.rx-text .rx-title {
+  display: block;
   margin: 0;
   font-size: 16px;
   font-weight: 800;
@@ -337,7 +373,10 @@ h1 {
   flex: 1;
 }
 
-.call-card-titles b {
+.call-card-titles b,
+.call-card-titles h3,
+.call-card-titles .call-card-title {
+  margin: 0;
   display: block;
   font-size: 15.5px;
   font-weight: 800;
@@ -359,11 +398,16 @@ h1 {
   gap: 8px;
 }
 
+.call-branches-two {
+  grid-template-columns: repeat(2, 1fr);
+}
+
 .call-branch {
   background: #fffcf5;
   border: 1.5px solid var(--border-color);
   border-radius: 13px;
   padding: 10px 6px 9px;
+  min-height: 48px;
   text-align: center;
   text-decoration: none;
   color: var(--text-main);
@@ -403,18 +447,28 @@ h1 {
   white-space: nowrap;
 }
 
-.branch-call-badge {
+.branch-call-badge,
+.branch-wa-badge {
   display: inline-flex;
   align-items: center;
   gap: 4px;
-  background: var(--brand-gold-light);
-  color: var(--brand-gold-dark);
-  border: 1px solid rgba(234, 175, 55, 0.45);
   border-radius: 20px;
   padding: 2px 9px;
   font-size: 10.5px;
   font-weight: 700;
   margin-top: 2px;
+}
+
+.branch-call-badge {
+  background: var(--brand-gold-light);
+  color: var(--brand-gold-dark);
+  border: 1px solid rgba(234, 175, 55, 0.45);
+}
+
+.branch-wa-badge {
+  background: #eafaf1;
+  color: #146c36;
+  border: 1px solid rgba(20, 108, 54, 0.35);
 }
 
 .grid {
@@ -528,7 +582,9 @@ h1 {
   flex: 1;
 }
 
-.address-info .label {
+.address-info .label,
+.address-info h3 {
+  margin: 0;
   font-weight: 800;
   font-size: 15px;
   color: var(--brand-navy);
@@ -544,13 +600,15 @@ h1 {
 .btn-directions {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 6px;
   margin-top: 10px;
   background: var(--brand-gold-light);
   color: var(--brand-gold-dark);
-  border: 1px solid rgba(234, 175, 55, 0.35);
-  padding: 6px 14px;
-  border-radius: 20px;
+  border: 1px solid rgba(138, 88, 6, 0.35);
+  padding: 8px 16px;
+  min-height: 44px;
+  border-radius: 22px;
   font-size: 13px;
   font-weight: 700;
   text-decoration: none;
@@ -622,11 +680,6 @@ h1 {
   padding: 4px;
 }
 
-.payment-logo.logo-etisalat {
-  background: #ffffff !important;
-  padding: 4px;
-}
-
 .payment-logo.logo-vodafone {
   background: #ffffff !important;
   padding: 3px;
@@ -649,7 +702,9 @@ h1 {
   flex: 1;
 }
 
-.payment-name {
+.payment-name,
+h3.payment-name {
+  margin: 0;
   font-size: 17px;
   font-weight: 800;
   color: var(--brand-navy);
@@ -703,6 +758,7 @@ h1 {
   border: 0;
   border-radius: var(--radius-sm);
   padding: 12px 14px;
+  min-height: 44px;
   font-family: inherit;
   font-weight: 700;
   font-size: 14px;
@@ -844,7 +900,8 @@ h1 {
   flex: 1;
 }
 
-.portal-text h2 {
+.portal-text h2,
+.portal-text h3 {
   margin: 0;
   font-size: 16.5px;
   font-weight: 800;
@@ -882,6 +939,7 @@ h1 {
   border: 1.5px solid var(--border-color);
   border-radius: var(--radius-md);
   padding: 12px 8px;
+  min-height: 48px;
   text-align: center;
   text-decoration: none;
   color: var(--brand-navy);
@@ -890,6 +948,7 @@ h1 {
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   gap: 6px;
   box-shadow: var(--shadow-sm);
   transition: all 0.2s;
@@ -1152,7 +1211,7 @@ h1 {
   }
 
   .payment-page .payment-actions .btn {
-    min-height: 40px;
+    min-height: 44px;
     padding: 9px 10px;
     border-radius: 11px;
     gap: 6px;
@@ -1258,7 +1317,9 @@ h1 {
     border-radius: 11px;
   }
 
-  .contact-page .call-card-titles b {
+  .contact-page .call-card-titles b,
+  .contact-page .call-card-titles h3,
+  .contact-page .call-card-titles .call-card-title {
     font-size: 14px;
   }
 
@@ -1273,6 +1334,7 @@ h1 {
   .contact-page .call-branch {
     padding: 8px 4px 7px;
     border-radius: 12px;
+    min-height: 44px;
   }
 
   .contact-page .branch-role {
@@ -1284,7 +1346,8 @@ h1 {
     letter-spacing: 0;
   }
 
-  .contact-page .branch-call-badge {
+  .contact-page .branch-call-badge,
+  .contact-page .branch-wa-badge {
     font-size: 10px;
     padding: 1.5px 7px;
   }

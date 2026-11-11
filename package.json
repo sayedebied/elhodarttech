@@ -1,0 +1,9 @@
+{
+  "name": "nfc-elhodarttech",
+  "version": "6.0.0",
+  "description": "ElHoda & RT Tech NFC Smart Business Card & Portal",
+  "scripts": {
+    "test": "node tests/smoke-test.js && node tests/behavior-test.js"
+  },
+  "private": true
+}

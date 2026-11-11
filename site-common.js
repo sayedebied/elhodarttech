@@ -1,8 +1,15 @@
 "use strict";
 
 const SITE = {
+  getConfig() {
+    if (typeof SITE_CONFIG !== "undefined") return SITE_CONFIG;
+    if (typeof PHARMACY !== "undefined") return PHARMACY;
+    return {};
+  },
+
   getCairoTime() {
-    const timezone = (PHARMACY.hours && PHARMACY.hours.timezone) || "Africa/Cairo";
+    const config = this.getConfig();
+    const timezone = (config.hours && config.hours.timezone) || "Africa/Cairo";
     const formatter = new Intl.DateTimeFormat("en-GB", {
       timeZone: timezone,
       weekday: "long",
@@ -23,7 +30,8 @@ const SITE = {
   },
 
   getStatusState() {
-    const hours = PHARMACY.hours;
+    const config = this.getConfig();
+    const hours = config.hours;
 
     if (!hours) {
       return {
@@ -94,21 +102,22 @@ const SITE = {
   },
 
   applyHeader() {
-    const nameEl = document.getElementById("pharmacyName");
+    const config = this.getConfig();
+    const nameEl = document.getElementById("businessName") || document.getElementById("pharmacyName");
     const enNameEl = document.getElementById("businessEnglishName");
-    const taglineEl = document.getElementById("pharmacyTagline");
-    const statusEl = document.getElementById("pharmacyStatus");
+    const taglineEl = document.getElementById("businessTagline") || document.getElementById("pharmacyTagline");
+    const statusEl = document.getElementById("businessStatus") || document.getElementById("pharmacyStatus");
     const badgeEl = document.getElementById("statusBadge");
     const logoImgs = document.querySelectorAll(".logo-img");
 
-    if (nameEl) nameEl.textContent = PHARMACY.name;
-    if (enNameEl && PHARMACY.englishName) enNameEl.textContent = PHARMACY.englishName;
-    if (taglineEl) taglineEl.textContent = PHARMACY.tagline;
+    if (nameEl && config.name) nameEl.textContent = config.name;
+    if (enNameEl && config.englishName) enNameEl.textContent = config.englishName;
+    if (taglineEl && config.tagline) taglineEl.textContent = config.tagline;
 
-    if (PHARMACY.logo && logoImgs.length > 0) {
+    if (config.logo && logoImgs.length > 0) {
       logoImgs.forEach((img) => {
-        img.src = PHARMACY.logo;
-        img.alt = `شعار ${PHARMACY.fullName || PHARMACY.name}`;
+        img.src = config.logo;
+        img.alt = `شعار ${config.fullName || config.name}`;
       });
     }
 
@@ -126,7 +135,7 @@ const SITE = {
 // تحديث حالة العمل تلقائيًا كل دقيقة
 window.addEventListener("DOMContentLoaded", () => {
   window.setInterval(() => {
-    if (document.getElementById("pharmacyStatus")) {
+    if (document.getElementById("businessStatus") || document.getElementById("pharmacyStatus")) {
       SITE.applyHeader();
     }
   }, 60000);

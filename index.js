@@ -2,13 +2,28 @@
 
 SITE.applyHeader();
 
+const config = typeof SITE_CONFIG !== "undefined" ? SITE_CONFIG : (typeof PHARMACY !== "undefined" ? PHARMACY : {});
+
 const encodedMessage = encodeURIComponent(
-  PHARMACY.prescriptionMsg || "السلام عليكم كنت حابب أستفسر عن"
+  config.whatsappMessage || config.prescriptionMsg || "السلام عليكم كنت حابب أستفسر عن"
 );
 
-document.getElementById("rxBtn").href =
-  `https://wa.me/${PHARMACY.whatsapp}?text=${encodedMessage}`;
-document.getElementById("quickWa").href =
-  `https://wa.me/${PHARMACY.whatsapp}?text=${encodedMessage}`;
-document.getElementById("quickCall").href = `tel:${PHARMACY.phone}`;
-document.getElementById("quickMap").href = PHARMACY.mapsUrl;
+const whatsappBtn = document.getElementById("whatsappOrderBtn") || document.getElementById("rxBtn");
+if (whatsappBtn && config.whatsapp) {
+  whatsappBtn.href = `https://wa.me/${config.whatsapp}?text=${encodedMessage}`;
+}
+
+const quickWa = document.getElementById("quickWa");
+if (quickWa && config.whatsapp) {
+  quickWa.href = `https://wa.me/${config.whatsapp}?text=${encodedMessage}`;
+}
+
+const quickCall = document.getElementById("quickCall");
+if (quickCall && config.phone) {
+  quickCall.href = `tel:${config.phone}`;
+}
+
+const quickMap = document.getElementById("quickMap");
+if (quickMap && config.mapsUrl) {
+  quickMap.href = config.mapsUrl;
+}

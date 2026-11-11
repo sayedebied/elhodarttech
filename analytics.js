@@ -1,11 +1,16 @@
 "use strict";
 
 (function initializeAnalytics() {
+  const config =
+    typeof SITE_CONFIG !== "undefined"
+      ? SITE_CONFIG
+      : typeof PHARMACY !== "undefined"
+      ? PHARMACY
+      : null;
+
   // يتم تفعيل الإحصائيات فقط عند إضافة Measurement ID الخاص بالعميل
   const measurementId =
-    typeof PHARMACY !== "undefined" && PHARMACY.analyticsId
-      ? PHARMACY.analyticsId.trim()
-      : "";
+    config && config.analyticsId ? config.analyticsId.trim() : "";
 
   window.dataLayer = window.dataLayer || [];
   window.gtag =
