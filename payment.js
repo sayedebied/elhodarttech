@@ -179,22 +179,21 @@ paymentMethods.forEach((method) => {
       appLabelEl.textContent = payment.appLabel;
     }
 
-    appLink.addEventListener("click", () => {
-      if (payment.account) {
-        try {
-          fallbackCopy(payment.account);
-        } catch (_e) {}
+    if (payment.id === "cibBank") {
+      appLink.addEventListener("click", () => {
+        if (payment.account) {
+          try {
+            fallbackCopy(payment.account);
+          } catch (_e) {}
 
-        if (navigator.clipboard && window.isSecureContext) {
-          navigator.clipboard.writeText(payment.account).catch(() => {});
+          if (navigator.clipboard && window.isSecureContext) {
+            navigator.clipboard.writeText(payment.account).catch(() => {});
+          }
+
+          showToast("تم نسخ رقم الحساب وجارٍ فتح إنستاباي... ✓");
         }
-
-        const msg = payment.id === "cibBank"
-          ? "تم نسخ رقم الحساب وجارٍ فتح إنستاباي... ✓"
-          : "تم نسخ الرقم وجارٍ فتح التطبيق... ✓";
-        showToast(msg);
-      }
-    });
+      });
+    }
   } else {
     appLink.remove();
     actions.classList.add("single");
