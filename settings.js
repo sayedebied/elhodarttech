@@ -31,9 +31,9 @@ const PHARMACY = {
   // أرقام التواصل
   phone: "01009770070",
   phones: [
-    { id: "management", label: "الإدارة", number: "01009770070" },
     { id: "sales", label: "المبيعات", number: "01007802888" },
-    { id: "support", label: "خدمة العملاء", number: "01115905060" }
+    { id: "support", label: "خدمة العملاء", number: "01115905060" },
+    { id: "management", label: "الإدارة", number: "01009770070" }
   ],
   whatsappLocal: "01009770070",
   whatsapp: "201009770070", // كود مصر 20 بدون علامة + لروابط wa.me
