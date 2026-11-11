@@ -636,6 +636,15 @@ h1 {
   transform: scale(1.3);
 }
 
+.payment-logo.logo-bank {
+  background: #ffffff !important;
+  padding: 4px;
+}
+
+.payment-logo.logo-bank img {
+  transform: scale(1.08);
+}
+
 .payment-details {
   flex: 1;
 }

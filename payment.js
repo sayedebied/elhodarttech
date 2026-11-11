@@ -14,14 +14,14 @@ const paymentMethods = [
     logoImg: "vodafone_cash_logo.png"
   },
   {
-    data: PHARMACY.payments.etisalatCash,
-    className: "logo-etisalat",
-    logoImg: "etisalat_logo.png"
+    data: PHARMACY.payments.vodafoneCash2,
+    className: "logo-vodafone",
+    logoImg: "vodafone_cash_logo.png"
   },
   {
     data: PHARMACY.payments.cibBank,
     className: "logo-bank",
-    logoImg: "cib_bank_logo.svg"
+    logoImg: "cib_bank_logo.png"
   }
 ];
 
@@ -146,8 +146,8 @@ paymentMethods.forEach((method) => {
   const analyticsMethodName = {
     instapay: "instapay",
     cibBank: "cib_bank",
-    etisalatCash: "etisalat_cash",
-    vodafoneCash: "vodafone_cash"
+    vodafoneCash: "vodafone_cash_1",
+    vodafoneCash2: "vodafone_cash_2"
   }[payment.id] || "payment";
 
   const fragment = template.content.cloneNode(true);
@@ -179,7 +179,7 @@ paymentMethods.forEach((method) => {
   );
 
   if (payment.appUrl) {
-    if (payment.id === "vodafoneCash") {
+    if (payment.id === "vodafoneCash" || payment.id === "vodafoneCash2") {
       configureVodafoneLink(payment, appLink);
     } else {
       appLink.href = payment.appUrl;
