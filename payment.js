@@ -100,12 +100,12 @@ function getInstaPayGeneralUrl() {
     (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
 
   if (isAndroid) {
-    return "intent://#Intent;package=com.egyptianbanks.instapay;end";
+    return "intent://open#Intent;scheme=ipn;package=com.egyptianbanks.instapay;end";
   }
   if (isIOS) {
-    return "instapay://";
+    return "ipn://open";
   }
-  return "intent://#Intent;package=com.egyptianbanks.instapay;end";
+  return "intent://open#Intent;scheme=ipn;package=com.egyptianbanks.instapay;end";
 }
 
 const container = document.getElementById("paymentCardsList");
@@ -162,12 +162,12 @@ paymentMethods.forEach((method) => {
       (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
 
     if (resolvedUrl.startsWith("intent:") && isIOS) {
-      resolvedUrl = "instapay://";
+      resolvedUrl = "ipn://open";
     }
 
     appLink.href = resolvedUrl;
 
-    if (resolvedUrl.startsWith("intent:") || resolvedUrl.startsWith("instapay:")) {
+    if (resolvedUrl.startsWith("intent:") || resolvedUrl.startsWith("instapay:") || resolvedUrl.startsWith("ipn:")) {
       appLink.removeAttribute("target");
     } else {
       appLink.target = "_blank";
