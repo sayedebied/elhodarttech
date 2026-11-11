@@ -93,8 +93,9 @@ const PHARMACY = {
       nameHolder: "البنك التجاري الدولي - مصر (رقم الحساب)",
       note: "تحويل لحساب البنك عبر إنستاباي أو التحويل البنكي",
       copyLabel: "نسخ رقم الحساب",
+      appLabel: "فتح إنستاباي",
       logo: "cib_bank_logo.png",
-      appUrl: ""
+      appUrl: "https://ipn.eg/S/syd.mahmoud/instapay/5gJ2be"
     }
   }
 };

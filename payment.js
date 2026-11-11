@@ -139,13 +139,25 @@ paymentMethods.forEach((method) => {
     appLink.target = "_blank";
     appLink.rel = "noopener noreferrer";
 
+    const appLabelEl = appLink.querySelector("span");
+    if (appLabelEl && payment.appLabel) {
+      appLabelEl.textContent = payment.appLabel;
+    }
+
     appLink.addEventListener("click", () => {
       if (payment.account) {
-        writeToClipboard(payment.account)
-          .then(() => {
-            showToast("تم نسخ الرقم وجارٍ فتح التطبيق... ✓");
-          })
-          .catch(() => {});
+        try {
+          fallbackCopy(payment.account);
+        } catch (_e) {}
+
+        if (navigator.clipboard && window.isSecureContext) {
+          navigator.clipboard.writeText(payment.account).catch(() => {});
+        }
+
+        const msg = payment.id === "cibBank"
+          ? "تم نسخ رقم الحساب وجارٍ فتح إنستاباي... ✓"
+          : "تم نسخ الرقم وجارٍ فتح التطبيق... ✓";
+        showToast(msg);
       }
     });
   } else {
