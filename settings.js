@@ -70,19 +70,19 @@ const PHARMACY = {
     },
     vodafoneCash: {
       id: "vodafoneCash",
-      label: "Vodafone Cash (فودافون كاش - 1)",
+      label: "Vodafone Cash (فودافون كاش)",
       account: "01009770070",
       nameHolder: "السيد محمود محمد مهدي",
-      note: "تحويل لمحفظة فودافون كاش (رقم 1)",
+      note: "تحويل لمحفظة فودافون كاش",
       logo: "vodafone_cash_logo.png",
       appUrl: "http://vf.eg/vfcash?id=mt&qrId=ZrqSPy"
     },
     vodafoneCash2: {
       id: "vodafoneCash2",
-      label: "Vodafone Cash (فودافون كاش - 2)",
+      label: "Vodafone Cash (فودافون كاش)",
       account: "01115905060",
       nameHolder: "محفظة فودافون كاش",
-      note: "تحويل لمحفظة فودافون كاش (رقم 2)",
+      note: "تحويل لمحفظة فودافون كاش",
       logo: "vodafone_cash_logo.png",
       appUrl: "http://vf.eg/vfcash"
     },
